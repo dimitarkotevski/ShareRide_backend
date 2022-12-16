@@ -1,12 +1,11 @@
 ﻿using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Text;
 
-namespace ShareRide.API.Hashing
+namespace ShareRide.API.Security.Hashing
 {
-    public static class HashingPassword
+    public partial class HashingPassword
     {
-        public static string Encrypt(string clearText)
+        public  string Encrypt(string clearText)
         {
             string encryptionKey = "MAKV2SPBNI99212";
             byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
@@ -28,7 +27,7 @@ namespace ShareRide.API.Hashing
 
             return clearText;
         }
-        public static string Decrypt(string cipherText)
+        public  string Decrypt(string cipherText)
         {
             string encryptionKey = "MAKV2SPBNI99212";
             byte[] cipherBytes = Convert.FromBase64String(cipherText);
