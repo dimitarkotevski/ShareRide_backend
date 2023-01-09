@@ -22,8 +22,13 @@ public partial class ShareRideDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        OnModelCreatingPartial(modelBuilder);
+        modelBuilder
+                .Entity<User>()
+                .HasOne(c => c.Role)
+                .WithMany(c => c.Users)
+                .HasForeignKey(c => c.RoleId);
+
+        base.OnModelCreating(modelBuilder);
     }
 
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

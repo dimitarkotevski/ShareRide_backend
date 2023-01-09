@@ -1,6 +1,4 @@
-﻿using Azure.Core;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShareRide.API.DataContext;
 using ShareRide.API.Models;
 using ShareRide.API.Models.Dto;
@@ -8,10 +6,10 @@ using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using ShareRide.API.Security.Hashing;
+using ShareRide.API.Services.Interface;
 
 namespace ShareRide.API.Controllers
 {
@@ -19,41 +17,35 @@ namespace ShareRide.API.Controllers
     [ApiController]
     public class IdentityController : ControllerBase
     {
-        private readonly ShareRideDbContext _context;
         private readonly IConfiguration _configuration;
-        private readonly HashingPassword _hashingPassword;
-        public IdentityController(ShareRideDbContext context, IConfiguration configuration, HashingPassword hashingPassword)
+        private readonly IUserService _userService;
+        public IdentityController(IConfiguration configuration, IUserService userService)
         {
-            _context = context;
             _configuration = configuration;
-            _hashingPassword = hashingPassword;
+            _userService = userService;
         }
+        [HttpPost]
         [Route("register")]
         public async Task<ActionResult<User>> Register([FromBody,Required] UserRegisterDto userDto,[FromHeader,Required] string password)
         {
-            var user = new User
-            {
-                Email = userDto.Email,
-                Username = userDto.Username,
-                Password = _hashingPassword.Encrypt(password),
-                Role= userDto.Role,
-            };
-            _context.Add(user);
-            await _context.SaveChangesAsync();
-            return Ok(user);
+            return   Ok(await _userService.RegisterUser(userDto,password));
         }
-        
+        [HttpPost]
         [Route("login")]
-        public async Task<ActionResult> Login( UserLoginDto userDto)
+        public async Task<ActionResult> Login([FromBody] UserLoginDto userDto)
         {
-            User user =await _context.Users.FirstAsync(u => 
-                u.Email == userDto.UserName && 
-                u.Password== _hashingPassword.Encrypt( userDto.Password ));
+            User user = await _userService.LoginUser(userDto);
             if (user == null)
             {
                 return Unauthorized();
             }
             return Ok(CreateToken(user));
+        }
+
+        [HttpGet("AllUser")]
+        public ActionResult GetAllRoles()
+        {
+            return Ok(_userService.GetAllUser());
         }
 
         private string CreateToken(User user)

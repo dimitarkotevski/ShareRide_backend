@@ -8,7 +8,9 @@ namespace ShareRide.API.Models.Dto
         public string Username { get; set; }
         [Required]
         public string Email { get; set; }
+        [Required]
+        public int RoleId { get; set; }
 
-        public Role Role { get; set; }
+        public DateTime createdDate { get; set; } = DateTime.Now;
     }
 }

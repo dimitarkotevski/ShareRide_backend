@@ -3,20 +3,33 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using ShareRide.API.Converter;
 using ShareRide.API.DataContext;
+using ShareRide.API.Repository;
 using ShareRide.API.Security.Hashing;
+using ShareRide.API.Services.Impl;
+using ShareRide.API.Services.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 builder.Services.AddTransient<HashingPassword>();
+builder.Services.AddTransient<UserRepository>();
+builder.Services.AddTransient<RoleRepository>();
+builder.Services.AddTransient<IRoleService,RoleService>();
+builder.Services.AddTransient<IUserService,UserService>();
+builder.Services.AddTransient<UserDtoToUser>();
+builder.Services.AddSession();
+builder.Services.AddMemoryCache();
 
-var provider = builder.Services.BuildServiceProvider();
+
+
+
+ServiceProvider provider = builder.Services.BuildServiceProvider();
 var configuration = provider.GetRequiredService<IConfiguration>();
-//for frontend
 
+//for frontend
 builder.Services.AddCors(option =>
 {
     var frontendUrl = configuration.GetValue<string>("ShareRide.CLI");
@@ -29,10 +42,12 @@ builder.Services.AddCors(option =>
 //connect to DataBase
 builder.Services.AddDbContext<ShareRideDbContext>(
     opts =>
-    opts.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnectionString"))
+    opts
+        .UseLazyLoadingProxies()
+        .UseSqlServer(builder.Configuration.GetConnectionString("defaultConnectionString"))
     );
 
-//add authentification
+//Add Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
@@ -47,7 +62,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         };   
     }
 );
-    var app = builder.Build();            
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+    );
+
+var app = builder.Build();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
+}
 
 //Config the HTTP request pipeline
 app.UseDeveloperExceptionPage();
@@ -63,5 +88,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-
+//Run App
 app.Run();

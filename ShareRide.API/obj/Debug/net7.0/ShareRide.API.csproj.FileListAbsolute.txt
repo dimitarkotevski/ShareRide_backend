@@ -17,8 +17,8 @@ C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Humanizer.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
-C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.CodeAnalysis.dll
@@ -39,7 +39,6 @@ C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.OpenApi.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Mono.TextTemplating.dll
@@ -48,9 +47,6 @@ C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Myvas.Extensions.Configuration.EntityFrameworkCore.UI.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Newtonsoft.Json.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
-C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\System.Configuration.ConfigurationManager.dll
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\System.Drawing.Common.dll
@@ -86,3 +82,5 @@ C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\obj\Debug\
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\obj\Debug\net7.0\ShareRide.API.pdb
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\obj\Debug\net7.0\ShareRide.API.genruntimeconfig.cache
 C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\obj\Debug\net7.0\ref\ShareRide.API.dll
+C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Castle.Core.dll
+C:\Users\Dimitar Kotevski\Desktop\diploma\ShareRide.API\ShareRide.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Proxies.dll

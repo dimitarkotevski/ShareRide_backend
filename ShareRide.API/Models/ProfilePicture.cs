@@ -2,7 +2,8 @@
 
 public class ProfilePicture
 {
-    public String name { get; set; }
-    public String mimeType { get; set; }
-    public String location { get; set; }
+    public int Id { get; set; }
+    public String Name { get; set; }
+    public String MimeType { get; set; }
+    public byte[] PhotoByteArray { get; set; }
 }
