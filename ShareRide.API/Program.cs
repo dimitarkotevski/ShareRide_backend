@@ -1,8 +1,10 @@
 
+using System.Net.Mail;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using ShareRide.API.Config;
 using ShareRide.API.Converter;
 using ShareRide.API.DataContext;
 using ShareRide.API.Repository;
@@ -17,14 +19,15 @@ builder.Services.AddControllers();
 builder.Services.AddTransient<HashingPassword>();
 builder.Services.AddTransient<UserRepository>();
 builder.Services.AddTransient<RoleRepository>();
+builder.Services.AddTransient<VerificationCodeRepository>();
+builder.Services.AddTransient<MailMessage>();
+builder.Services.AddTransient<EmailConfig>();
+builder.Services.AddTransient<RandomVerificationCode>();
 builder.Services.AddTransient<IRoleService,RoleService>();
 builder.Services.AddTransient<IUserService,UserService>();
-builder.Services.AddTransient<UserDtoToUser>();
+builder.Services.AddTransient<ConverterObjectsFromDataBase>();
 builder.Services.AddSession();
 builder.Services.AddMemoryCache();
-
-
-
 
 ServiceProvider provider = builder.Services.BuildServiceProvider();
 var configuration = provider.GetRequiredService<IConfiguration>();
@@ -76,16 +79,11 @@ if (!app.Environment.IsDevelopment())
 
 //Config the HTTP request pipeline
 app.UseDeveloperExceptionPage();
-
 app.UseRouting();
-
 app.UseCors();
-
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
 //Run App

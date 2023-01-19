@@ -2,6 +2,6 @@
 
 public static class Constants
 {
-    public static string frontEndUrl = "ShareRide.CLI";
+    public static string FrontEndUrl = "ShareRide.CLI";
     
 }

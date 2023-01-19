@@ -1,7 +1,4 @@
-﻿using ShareRide.API.Models.Dto;
-using ShareRide.API.Security.Hashing;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ShareRide.API.Models
 {
@@ -16,26 +13,20 @@ namespace ShareRide.API.Models
         [Required]
         public string Password { get; set; }
 
-        public DateTime? dateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime? DateModified { get; set; }
+        public DateTime? DateDeleted { get; set; }
+        public bool IsEnabled { get; set; }
 
         public string? Address { get; set; }
         public string? PhoneNumber { get; set; }
         [Required]
         public int RoleId { get; set; }
         public virtual Role Role { get; set; }
-
-        public User(string username, string email, string password, DateTime? dateCreated, string? address, string? phoneNumber, int roleId, Role role)
-        {
-            Username = username;
-            Email = email;
-            Password = password;
-            this.dateCreated = dateCreated;
-            Address = address;
-            PhoneNumber = phoneNumber;
-            RoleId = roleId;
-            Role = role;
-        }
-
+        public int? ProfilePictureId { get; set; }
+        public virtual ProfilePicture? ProfilePicture { get; set; }
+        public int? VerificationCodeId { get; set; }
+        public virtual VerificationCode? VerificationCode { get; set; }
         public User()
         {
         }
